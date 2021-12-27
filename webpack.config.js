@@ -12,10 +12,6 @@ module.exports = {
     taskpane: "./src/taskpane/taskpane.js",
     commands: "./src/commands/commands.js",
   },
-  output: {
-    devtoolModuleFilenameTemplate: "webpack:///[resource-path]?[loaders]",
-    clean: true,
-  },
   resolve: {
     extensions: [".ts", ".tsx", ".html", ".js"],
   },
