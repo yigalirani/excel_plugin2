@@ -75,20 +75,9 @@ module.exports = async (env, options) => {
           {
             from: "assets/icon-*",
             to: "assets/[name][ext][query]",
-          },
-          {
-            from: "manifest*.xml",
-            to: "[name]." + buildType + "[ext]",
-            transform(content) {
-              if (dev) {
-                return content;
-              } else {
-                return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
-              }
-            },
-          },
+          }
         ],
-      }),
+      })
 
     ],
     devServer: {
