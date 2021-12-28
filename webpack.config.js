@@ -8,9 +8,9 @@ module.exports = {
   devtool: "source-map",
   entry: {
     polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-    functions: "./src/functions/functions.js",
-    taskpane: "./src/taskpane/taskpane.js",
-    commands: "./src/commands/commands.js",
+    functions: "./src/functions.js",
+    taskpane: "./src/taskpane.js",
+    commands: "./src/commands.js",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".html", ".js"],
@@ -44,12 +44,12 @@ module.exports = {
   plugins: [
     new CustomFunctionsMetadataPlugin({
       output: "functions.json",
-      input: "./src/functions/functions.js",
+      input: "./src/functions.js",
     }),
 
     new HtmlWebpackPlugin({
       filename: "taskpane.html",
-      template: "./src/taskpane/taskpane.html",
+      template: "./src/taskpane.html",
       chunks: ["polyfill", "taskpane", "commands", "functions"],
     }),
     new CopyWebpackPlugin({
