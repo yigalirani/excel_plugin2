@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const CustomFunctionsMetadataPlugin = require("custom-functions-metadata-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -42,11 +41,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new CustomFunctionsMetadataPlugin({
-      output: "functions.json",
-      input: "./src/functions.js",
-    }),
-
     new HtmlWebpackPlugin({
       filename: "taskpane.html",
       template: "./src/taskpane.html",
@@ -57,6 +51,10 @@ module.exports = {
         {
           from: "assets/icon-*",
           to: "assets/[name][ext][query]",
+        },
+        {
+          from: "src/*.(css|json)",
+          to: "[name][ext]",
         },
       ],
     }),
