@@ -65,3 +65,7 @@ function logMessage(message) {
 
   return message;
 }
+CustomFunctions.associate("ADD", add);
+CustomFunctions.associate("CLOCK", clock);
+CustomFunctions.associate("INCREMENT", increment);
+CustomFunctions.associate("LOG", logMessage);
