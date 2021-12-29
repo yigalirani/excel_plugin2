@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   devtool: "source-map",
@@ -12,7 +11,7 @@ module.exports = {
     commands: "./src/commands.js",
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".html", ".js"],
+    extensions: [".js"],
   },
   module: {
     rules: [
@@ -26,26 +25,9 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.html$/,
-        exclude: /node_modules/,
-        use: "html-loader",
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|ico)$/,
-        type: "asset/resource",
-        generator: {
-          filename: "assets/[name][ext][query]",
-        },
-      },
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: "taskpane.html",
-      template: "./src/taskpane.html",
-      chunks: ["polyfill", "taskpane", "commands", "functions"],
-    }),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -53,7 +35,7 @@ module.exports = {
           to: "assets/[name][ext][query]",
         },
         {
-          from: "src/*.(css|json)",
+          from: "src/*.(css|json|html)",
           to: "[name][ext]",
         },
       ],
